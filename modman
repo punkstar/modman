@@ -485,7 +485,7 @@ copy_over ()
         rm -rf "$dest"
       fi
     fi
-    cp -R "$src" "$dest" || return 1
+    cp -R $src "$dest" || return 1
   done
   return 0
 }
