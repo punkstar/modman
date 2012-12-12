@@ -812,12 +812,6 @@ fi
 # Get optional args again (allow them to come after the module name)
 while [[ 1 ]]; do
   case "$1" in
-    --force)
-      FORCE=1; shift
-      ;;
-    --no-local)
-      LOCAL=0; shift
-      ;;
     --basedir)
       shift; basedir="$1"; shift
       if ! [ -n "$basedir" -a -d "$root/$basedir" ]; then
@@ -826,6 +820,19 @@ while [[ 1 ]]; do
       ;;
     *)
       break
+  esac
+done
+
+# Scan for the flags in all ARGV positions
+for var in "$@"
+do
+  case "$var" in
+    --force)
+      FORCE=1; 
+      ;;
+    --no-local)
+      LOCAL=0;
+      ;;
   esac
 done
 
